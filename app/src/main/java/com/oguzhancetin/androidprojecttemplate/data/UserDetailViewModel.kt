@@ -20,7 +20,7 @@ class UserDetailViewModel @Inject constructor(
     fun getUserInfo(userName:String){
         viewModelScope.launch {
             userRepository.getUserInfo(userName).collect {
-                _userInfoStateFlow.value = it
+                _userInfoStateFlow.value = NetworkResult.Success(it)
             }
         }
     }

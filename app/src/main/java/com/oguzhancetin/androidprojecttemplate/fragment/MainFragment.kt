@@ -16,6 +16,7 @@ import com.oguzhancetin.androidprojecttemplate.data.NetworkResult
 import com.oguzhancetin.androidprojecttemplate.data.UserViewModel
 import com.oguzhancetin.androidprojecttemplate.databinding.FragmentMainBinding
 import com.oguzhancetin.androidprojecttemplate.model.User
+import com.oguzhancetin.androidprojecttemplate.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -34,7 +35,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = UserListAdapter(requireContext(), listOf<User>(), ::onClickUserCard)
+        adapter = UserListAdapter(::onClickUserCard)
         binding.rcUser.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rcUser.also {
@@ -77,7 +78,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 
                                     binding.progressBar.visibility = View.INVISIBLE
                                     it.data?.let { users ->
-                                        adapter.refreshList(users)
+                                        adapter.submitList(users)
                                     }
                                 }
 

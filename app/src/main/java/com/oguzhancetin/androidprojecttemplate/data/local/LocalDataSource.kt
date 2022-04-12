@@ -10,11 +10,11 @@ import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(private val dao: UserDao) {
 
-    suspend fun getAllUser() = dao.getAllUser()
+    fun getAllUser() = dao.getAllUser()
 
-    suspend fun insertUser(user: User) = dao.insertUser(user)
+    fun insertUser(user: User) = dao.insertUser(user)
 
-    suspend fun getUserDetailByUserName(userName: String) = dao.getUserDetailByUserName(userName)
+    fun getUserDetailByUserName(userName: String) = dao.getUserDetailByUserName(userName)
 
-    suspend fun insertUserDetail(userDetail: UserDetail) = dao.insertUserDetail(userDetail)
+    fun insertUserDetail(userDetail: UserDetail) = dao.insertUserDetail(userDetail)
 }

@@ -28,9 +28,7 @@ class UserRepository @Inject constructor(
     suspend fun getUserList(): Flow<List<User>> {
         with(CoroutineScope(coroutineContext)){
             launch (Dispatchers.IO){
-                Log.d("userlist","a")
-                val result = safeApiCall { remoteDataSource.getUserList() }
-                when (result) {
+                when (val result = safeApiCall { remoteDataSource.getUserList() }) {
                     is NetworkResult.Loading -> {
                     }
                     is NetworkResult.Error -> {
@@ -46,9 +44,26 @@ class UserRepository @Inject constructor(
         Log.d("userlist","b")
         return localDataSource.getAllUser()
     }
+    suspend fun getUserInfo(userName: String): Flow<UserDetail> {
+        with(CoroutineScope(coroutineContext)){
+            launch (Dispatchers.IO){
+                when (val result = safeApiCall { remoteDataSource.getUserDetail(userName) }) {
+                    is NetworkResult.Loading -> {
+                    }
+                    is NetworkResult.Error -> {
+                    }
+                    is NetworkResult.Success ->{
+                        result.data?.let {userDetails ->
+                             localDataSource.insertUserDetail(userDetails) }
+                        }
+                    }
+                }
+            }
 
-    suspend fun getUserInfo(userName: String) = flow<NetworkResult<UserDetail>> {
-        emit(safeApiCall { remoteDataSource.getUserDetail(userName) })
-    }.flowOn(Dispatchers.IO)
+
+        return localDataSource.getUserDetailByUserName(userName)
+    }
+
+
 
 }

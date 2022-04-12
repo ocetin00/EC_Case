@@ -1,4 +1,4 @@
-package com.oguzhancetin.androidprojecttemplate.fragment
+package com.oguzhancetin.androidprojecttemplate.util
 
 import android.os.Bundle
 import android.view.LayoutInflater

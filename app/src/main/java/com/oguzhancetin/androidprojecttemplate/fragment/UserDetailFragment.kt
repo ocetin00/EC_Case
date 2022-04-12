@@ -1,10 +1,8 @@
 package com.oguzhancetin.androidprojecttemplate.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -12,10 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.oguzhancetin.androidprojecttemplate.R
 import com.oguzhancetin.androidprojecttemplate.data.NetworkResult
 import com.oguzhancetin.androidprojecttemplate.data.UserDetailViewModel
 import com.oguzhancetin.androidprojecttemplate.databinding.FragmentUserDetailBinding
+import com.oguzhancetin.androidprojecttemplate.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -36,7 +34,7 @@ class UserDetailFragment() : BaseFragment<FragmentUserDetailBinding>() {
 
     }
 
-    fun fetchUserInfo(userName:String){
+    private fun fetchUserInfo(userName:String){
 
         viewModel.getUserInfo(userName)
         viewLifecycleOwner.lifecycleScope.launch {

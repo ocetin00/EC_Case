@@ -44,7 +44,8 @@ class MainModule {
     @Singleton
     fun provideRoomDb(@ApplicationContext context: Context) : AppDatabase{
         return Room.databaseBuilder(context
-            ,AppDatabase::class.java,"ec_db").build()
+            ,AppDatabase::class.java,"ec_db_2")
+            .build()
     }
     @Provides
     @Singleton
