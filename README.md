@@ -1,4 +1,4 @@
-# Request an api and cashing result 
+# Request an api and cashing result with MVVM and repository pattern
 
 ## tools used
  - kotlin-ktx, Hilt, Retrofit, Room,Kotlin Flow,Coroutine mvvm architecture,
