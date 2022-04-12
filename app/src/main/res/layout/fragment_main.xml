@@ -5,9 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".fragment.MainFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="fragment main" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="100dp"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        android:layout_height="100dp" />
 </FrameLayout>

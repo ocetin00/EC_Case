@@ -18,10 +18,11 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflateView().root
+        _binding = getVB()
+        return binding.root
     }
 
-    abstract fun inflateView(): VB
+    abstract fun getVB(): VB
 
     override fun onDestroy() {
         super.onDestroy()
